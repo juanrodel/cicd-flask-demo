@@ -1,5 +1,5 @@
 ## CI/CD Demo
-![CI](https://github.com/<user>/cicd-flask-demo/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/juanrodel/cicd-flask-demo/actions/workflows/ci.yml/badge.svg)
 
 In this demo, I made a simple API with Flask in order to try to simulate the CI/CD pipeline on corporate enviornments.
 The CI/CD pipeline performs actions such as linting, testing with a python script, building a hardened container image, publishing it to GHCR, and ensuring that promotion through staging to production is behind a manual approval gate.
