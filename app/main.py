@@ -1,10 +1,9 @@
 import logging
 import os
 
-from flask import Flask, jsonify, request
 import psycopg
 import redis
-
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 logger = logging.getLogger(__name__)
