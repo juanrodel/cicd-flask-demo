@@ -4,7 +4,7 @@
 In this demo, I made a simple API with Flask in order to try to simulate the CI/CD pipeline on corporate enviornments.
 The CI/CD pipeline performs actions such as linting, testing with a python script, building a hardened container image, publishing it to GHCR, and ensuring that promotion through staging to production is behind a manual approval gate.
 
-## Architecture diagram
+## CI/CD diagram
 ```mermaid
    flowchart LR
      A[Pull request] --> B[test: lint + pytest]
@@ -37,9 +37,15 @@ python -m pip install -r requirements.txt -r requirements-dev.txt
 python -m ruff check .
 python -m pytest
 ```
+copy .env.example .env
+
+Create secrets/db_password.txt
+```powershell
+mkdir secrets
+-join ((48..57)+(65..90)+(97..122) | Get-Random -Count 32 | ForEach-Object {[char]$_}) | Set-Content -NoNewline secrets\db_password.txt
+```
 
 ```powershell
-docker build -t demo .
-docker run -p 8000:8000 demo
-curl.exe localhost:8000/health
+docker compose up -d --build --wait
 ```
+
