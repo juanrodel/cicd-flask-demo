@@ -13,6 +13,16 @@ REDIS_URL = os.environ.get("REDIS_URL", "redis://localhost:6379/0")
 
 
 def get_db():
+    password_file = os.environ.get("DB_PASSWORD_FILE")
+    if password_file:
+        with open(password_file) as f:
+            password = f.read().strip()
+        return psycopg.connect(
+            host=os.environ["DB_HOST"],
+            dbname=os.environ["DB_NAME"],
+            user=os.environ["DB_USER"],
+            password=password,
+        )
     return psycopg.connect(DATABASE_URL)
 
 

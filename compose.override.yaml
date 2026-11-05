@@ -1,0 +1,7 @@
+services:
+  api:
+    command: ["gunicorn", "--reload", "-b", "0.0.0.0:8000", "app.main:app"]
+    volumes:
+      - ./app:/home/appuser/app:ro
+    environment:
+      FLASK_DEBUG: "1"
