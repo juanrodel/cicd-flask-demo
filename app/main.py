@@ -37,8 +37,10 @@ def ready():
             conn.execute("SELECT 1")
         get_cache().ping()
     except Exception:
+        logger.exception("Health check failed")
         return jsonify(status="unavailable"), 503
-    return jsonify(status="ready")
+    else:
+        return jsonify(status="ready")
 
 
 @app.get("/visits")
