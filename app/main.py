@@ -3,8 +3,11 @@ import os
 import psycopg
 import redis
 from flask import Flask, jsonify, request
+import logging
+
 
 app = Flask(__name__)
+logger = logging.getLogger(__name__)
 
 DATABASE_URL = os.environ.get("DATABASE_URL", "")
 REDIS_URL = os.environ.get("REDIS_URL", "redis://localhost:6379/0")
@@ -37,6 +40,7 @@ def ready():
             conn.execute("SELECT 1")
         get_cache().ping()
     except Exception:
+        logger.exception("Health check failed")
         return jsonify(status="unavailable"), 503
     else:
         return jsonify(status="ready")
