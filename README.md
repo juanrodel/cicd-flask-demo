@@ -107,4 +107,4 @@ Stop with `docker compose down` (keeps data) or `docker compose down -v` (delete
 - [ ] Real deployment via Kubernetes and Argo CD
 - [ ] DevSecOps gates: Gitleaks, Semgrep, Trivy, SBOM, Cosign signing
 - [ ] Connection pooling, Vault for secrets
-- [ ] Dependabot for actions, pip, Docker
+- [ ] Dependabot for actions, pip, Docker 
