@@ -12,3 +12,6 @@ USER appuser
 EXPOSE 8000
 HEALTHCHECK CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"
 CMD ["gunicorn", "-b", "0.0.0.0:8000", "app.main:app"]
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1

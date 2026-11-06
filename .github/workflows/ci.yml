@@ -18,6 +18,35 @@ jobs:
     uses: ./.github/workflows/test.yml
     with:
       python-version: "3.15"
+    compose-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Create config and secret
+        run: |
+          cp .env.example .env
+          mkdir -p secrets
+          openssl rand -hex 16 | tr -d '\n' > secrets/db_password.txt
+
+      - name: Start stack
+        run: docker compose -f compose.yaml up -d --build --wait
+
+      - name: Smoke tests through nginx
+        run: |
+          curl -fsS localhost:8080/health
+          curl -fsS localhost:8080/ready
+          curl -fsS -X POST -H 'Content-Type: application/json' -d '{"body":"ci"}' localhost:8080/notes
+          curl -fsS localhost:8080/notes | grep -q '"ci"'
+          curl -fsS localhost:8080/visits
+
+      - name: Show logs on failure
+        if: failure()
+        run: docker compose -f compose.yaml logs
+
+      - name: Tear down
+        if: always()
+        run: docker compose -f compose.yaml down -v
 
   build-push:
     needs: test

@@ -4,3 +4,5 @@ tests
 .github
 *.md
 secrets
+docs
+backups
