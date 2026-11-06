@@ -1,5 +1,5 @@
 ## DevOps-notes-platform
-![CI](https://github.com/juanrodel/cicd-flask-demo/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/juanrodel/devops-notes-platform/actions/workflows/ci.yml/badge.svg)
 
 A small Flask notes API with a CI/CD pipeline and a hardened multi-service Docker Compose stack. The API is really simple as I have mainly used this project to learn more about the DevOps side of development.
 
@@ -107,4 +107,4 @@ Stop with `docker compose down` (keeps data) or `docker compose down -v` (delete
 - [ ] Real deployment via Kubernetes and Argo CD
 - [ ] DevSecOps gates: Gitleaks, Semgrep, Trivy, SBOM, Cosign signing
 - [ ] Connection pooling, Vault for secrets
-- [ ] Dependabot for actions, pip, Docker
+- [ ] Dependabot for actions, pip, Docker 
