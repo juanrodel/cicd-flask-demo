@@ -1,5 +1,5 @@
 ## DevOps-notes-platform
-![CI](https://github.com/juanrodel/cicd-flask-demo/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/juanrodel/devops-notes-platform/actions/workflows/ci.yml/badge.svg)
 
 A small Flask notes API with a CI/CD pipeline and a hardened multi-service Docker Compose stack. The API is really simple as I have mainly used this project to learn more about the DevOps side of development.
 
